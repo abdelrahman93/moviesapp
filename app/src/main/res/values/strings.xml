@@ -6,6 +6,6 @@
     <string name="search_for_movie">Search For Movie</string>
     <string name="rating">Rating : %s/5</string>
     <string name="year">Year : %s</string>
-    <string name="cast">Cast : %s</string>
+    <string name="cast"><b>Cast</b> : %s</string>
 
 </resources>

@@ -2,6 +2,8 @@ package com.task.movieapp.di.component
 
 import android.content.Context
 import com.task.movieapp.di.module.*
+import com.task.movieapp.ui.moviedetails.MovieDetailsFragment
+import com.task.movieapp.ui.moviedetails.MoviesDetailsViewModel
 import com.task.movieapp.ui.movies.MoviesFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -25,7 +27,9 @@ interface AppComponent {
         fun create(@BindsInstance context: Context): AppComponent
     }
 
-    fun inject(ingredientsFragment: MoviesFragment)
+    fun inject(moviesFragment: MoviesFragment)
+    fun inject(movieDetailsFragment: MovieDetailsFragment)
+
 
     @Named(SCHEDULER_MAIN_THREAD)
     fun getMainThread(): Scheduler

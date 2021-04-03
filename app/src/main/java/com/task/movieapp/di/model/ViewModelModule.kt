@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.task.movieapp.di.factory.ViewModelFactory
 import com.task.movieapp.di.keys.ViewModelKey
+import com.task.movieapp.ui.moviedetails.MoviesDetailsViewModel
 import com.task.movieapp.ui.movies.MoviesViewModel
 import dagger.Binds
 import dagger.Module
@@ -20,5 +21,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MoviesViewModel::class)
     abstract fun bindMoviesViewModel(moviesViewModel: MoviesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MoviesDetailsViewModel::class)
+    abstract fun bindMoviesDetailsViewModel(moviesDetailsViewModel: MoviesDetailsViewModel): ViewModel
+
 
 }

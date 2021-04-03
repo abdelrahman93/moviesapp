@@ -4,12 +4,15 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.orange.offers.ui.home4g.offerlist.adapter.MoviesAdapter
 import com.orange.offers.ui.home4g.offerlist.adapter.SearchMoviesAdapter
 import com.task.movieapp.BaseFragment
 import com.task.movieapp.BaseViewState
 import com.task.movieapp.R
+import com.task.movieapp.data.model.MoviesItem
 import com.task.movieapp.di.component.DaggerAppComponent
+import com.task.movieapp.utilities.getJsonDataFromAsset
 import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.android.synthetic.main.search_bar_layout.*
 import kotlinx.android.synthetic.main.search_list_layout.*
@@ -47,7 +50,9 @@ class MoviesFragment : BaseFragment<MoviesViewModel>(MoviesViewModel::class.java
     override fun renderView(viewState: BaseViewState?) {
         when (viewState) {
             is MoviesViewState.successMoviesList -> {
-                adapter = MoviesAdapter(ArrayList())
+                adapter = MoviesAdapter(ArrayList()) {
+                    onMovieClick(it)
+                }
                 rvMoviesList.adapter = adapter
                 adapter.addAll(viewState.moviesList.movies.subList(0, 10))
             }
@@ -61,7 +66,9 @@ class MoviesFragment : BaseFragment<MoviesViewModel>(MoviesViewModel::class.java
                 rvMoviesList.visibility = View.GONE
             }
             is MoviesViewState.SearchResult -> {
-                var adapter = SearchMoviesAdapter(ArrayList())
+                val adapter = SearchMoviesAdapter(ArrayList()) {
+                    onMovieClick(it)
+                }
                 rvSearchMoviesList.adapter = adapter
                 adapter.addAll(viewState.searchResult)
             }
@@ -77,18 +84,17 @@ class MoviesFragment : BaseFragment<MoviesViewModel>(MoviesViewModel::class.java
 
     }
 
-    fun getJsonDataFromAsset(context: Context): String? {
-        val jsonString: String
-        try {
-            jsonString = context.assets.open("movies.json").bufferedReader().use { it.readText() }
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-            return null
-        }
-        return jsonString
+
+
+    private fun onMovieClick(movie: MoviesItem) {
+        navigateToMovieDetails(movie)
     }
 
-
+    private fun navigateToMovieDetails(movie: MoviesItem) {
+        etSearchbar.editableText.clear()
+        val action = MoviesFragmentDirections.toMovieDetails(movie)
+        findNavController().navigate(action)
+    }
 }
 
 

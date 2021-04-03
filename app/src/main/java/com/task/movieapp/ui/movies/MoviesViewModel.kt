@@ -48,8 +48,6 @@ class MoviesViewModel @Inject constructor(
                 moviesListByYear.add(MoviesByYear(list.take(5), item.key))
             }
 
-
-
             internalState.value = MoviesViewState.SearchResult(moviesListByYear)
         }
     } else {

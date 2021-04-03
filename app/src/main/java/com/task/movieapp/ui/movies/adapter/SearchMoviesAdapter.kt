@@ -6,11 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.task.movieapp.R
 import com.task.movieapp.data.model.MoviesByYear
+import com.task.movieapp.data.model.MoviesItem
 import kotlinx.android.synthetic.main.item_search_movie.view.*
-import kotlinx.android.synthetic.main.search_list_layout.view.*
 
 
-class SearchMoviesAdapter(private val moviesSearchList: ArrayList<MoviesByYear>) :
+class SearchMoviesAdapter(
+    private val moviesSearchList: ArrayList<MoviesByYear>,
+    private val onClick: (MoviesItem) -> Unit
+) :
     RecyclerView.Adapter<SearchMoviesAdapter.MoviesViewHolder>() {
 
     override fun getItemCount() = moviesSearchList.size
@@ -34,7 +37,9 @@ class SearchMoviesAdapter(private val moviesSearchList: ArrayList<MoviesByYear>)
     inner class MoviesViewHolder(private val rootView: View) : RecyclerView.ViewHolder(rootView) {
         fun bind(moviesByYear: MoviesByYear) {
             this.rootView.tvSearchYear.text = moviesByYear.year.toString()
-            var adapter = MoviesAdapter(ArrayList())
+            var adapter = MoviesAdapter(ArrayList()) {
+                onClick.invoke(it)
+            }
             this.rootView.rvMoviesListByYear.adapter = adapter
             adapter.addAll(moviesByYear.moviesListByYear)
 

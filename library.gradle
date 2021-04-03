@@ -27,6 +27,7 @@ ext {
             navigationFragment  : "androidx.navigation:navigation-fragment-ktx:${navigationVersion}",
             navigationUi        : "androidx.navigation:navigation-ui-ktx:${navigationVersion}",
 
+            glide               : "com.github.bumptech.glide:glide:${glideVersion}",
 
             sdp                 : "com.intuit.sdp:sdp-android:${dimVersion}",
             ssp                 : "com.intuit.ssp:ssp-android:${dimVersion}",

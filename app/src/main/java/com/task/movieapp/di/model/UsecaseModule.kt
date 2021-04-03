@@ -10,7 +10,7 @@ import dagger.Provides
 class UsecaseModule {
 
     @Provides
-    fun provideOfferUseCase(repository: Repository): MovieUseCase {
+    fun provideMovieUseCase(repository: Repository): MovieUseCase {
         return MovieUseCaseImp(repository = repository)
     }
 

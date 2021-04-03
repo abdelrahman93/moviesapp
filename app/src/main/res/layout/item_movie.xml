@@ -15,7 +15,6 @@
         app:cardCornerRadius="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/r_attendance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

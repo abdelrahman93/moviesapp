@@ -9,7 +9,10 @@ import com.task.movieapp.data.model.MoviesItem
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 
-class MoviesAdapter(private val moviesList: ArrayList<MoviesItem>) :
+class MoviesAdapter(
+    private val moviesList: ArrayList<MoviesItem>,
+    private val onClick: (MoviesItem) -> Unit
+) :
     RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
     override fun getItemCount() = moviesList.size
@@ -33,10 +36,19 @@ class MoviesAdapter(private val moviesList: ArrayList<MoviesItem>) :
     inner class MoviesViewHolder(private val rootView: View) : RecyclerView.ViewHolder(rootView) {
         fun bind(moviesItem: MoviesItem) {
             this.rootView.tvMovieTitle.text = moviesItem.title
-            this.rootView.tvMovieYear.text = String.format(rootView.resources.getString(R.string.year), moviesItem.year)
-            this.rootView.tvMovieRating.text = String.format(rootView.resources.getString(R.string.rating), moviesItem.rating)
+            this.rootView.tvMovieYear.text =
+                String.format(rootView.resources.getString(R.string.year), moviesItem.year)
+            this.rootView.tvMovieRating.text =
+                String.format(rootView.resources.getString(R.string.rating), moviesItem.rating)
             this.rootView.tvMovieGenres.text = moviesItem.genres?.joinToString(separator = " , ")
-            this.rootView.tvMovieCast.text = String.format(rootView.resources.getString(R.string.cast), moviesItem.cast?.joinToString(separator = " , "))
+            this.rootView.tvMovieCast.text = String.format(
+                rootView.resources.getString(R.string.cast),
+                moviesItem.cast?.joinToString(separator = " , ")
+            )
+
+            this.rootView.setOnClickListener {
+                onClick.invoke(moviesItem)
+            }
         }
     }
 }

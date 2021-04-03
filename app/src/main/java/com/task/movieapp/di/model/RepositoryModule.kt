@@ -5,6 +5,7 @@ import com.task.movieapp.data.repository.RepositoryImp
 import com.task.movieapp.domain.remote.FlickerAPI
 import com.task.movieapp.domain.repository.Repository
 import com.task.movieapp.network.Services
+import com.task.movieapp.utilities.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -14,12 +15,11 @@ import javax.inject.Singleton
 class RepositoryModule {
     @Singleton
     @Provides
-    fun createRetrofit(context: Context) = Services.getInstance("https://api.edamam.com/").retrofit
-
+    fun createRetrofit(context: Context) = Services.getInstance(BASE_URL).retrofit
 
 
     @Provides
-    fun provideApi( retrofit: Retrofit): FlickerAPI {
+    fun provideApi(retrofit: Retrofit): FlickerAPI {
         return retrofit.create(FlickerAPI::class.java)
     }
 

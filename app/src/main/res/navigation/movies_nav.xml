@@ -11,7 +11,23 @@
         android:label="ingredients_fragment"
         tools:layout="@layout/fragment_movies">
 
-     </fragment>
+        <action
+            android:id="@+id/to_movie_details"
+            app:destination="@id/fragmentMovieDetails" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/fragmentMovieDetails"
+        android:name="com.task.movieapp.ui.moviedetails.MovieDetailsFragment"
+        android:label="fragment_detail_movie"
+        tools:layout="@layout/fragment_detail_movie">
+        <argument
+            android:name="movie"
+            app:argType="com.task.movieapp.data.model.MoviesItem" />
+
+    </fragment>
 
 
 </navigation>
