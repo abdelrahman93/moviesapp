@@ -1,4 +1,4 @@
-package com.orange.offers.ui.home4g.offerlist.adapter
+package com.task.movieapp.ui.movies.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +18,6 @@ class MoviesAdapter(
     override fun getItemCount() = moviesList.size
 
     fun addAll(newMoviesList: List<MoviesItem>) {
-        moviesList.clear()
         moviesList.addAll(newMoviesList)
         notifyDataSetChanged()
     }

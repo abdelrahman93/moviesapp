@@ -1,4 +1,4 @@
-package com.orange.offers.ui.home4g.offerlist.adapter
+package com.task.movieapp.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.task.movieapp.R
 import com.task.movieapp.data.model.MoviesByYear
 import com.task.movieapp.data.model.MoviesItem
+import com.task.movieapp.ui.movies.adapter.MoviesAdapter
 import kotlinx.android.synthetic.main.item_search_movie.view.*
 
 
