@@ -26,7 +26,6 @@ android {
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "Base_Url", '"http://services.staging.orange.eg/"'
 
         }
     }
@@ -92,6 +91,14 @@ dependencies {
     //glide
     api(rootProject.ext.libraries.glide)
     kapt rootProject.ext.apt.glideCompiler
+
+    //testing
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation (rootProject.ext.libraries.mockito)
+    testImplementation (rootProject.ext.libraries.mockitoKotlin)
+    testImplementation (rootProject.ext.libraries.coreTesting)
+    testImplementation (rootProject.ext.libraries.mockk)
+
 
 
 

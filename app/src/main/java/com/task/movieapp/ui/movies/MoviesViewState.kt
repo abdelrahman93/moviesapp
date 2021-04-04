@@ -9,7 +9,19 @@ import com.task.movieapp.data.model.MoviesList
  */
 class MoviesViewState : BaseViewState() {
 
-    class successMoviesList(val moviesList:MoviesList):BaseViewState()
+    class successMoviesList(val moviesList:MoviesList):BaseViewState(){
+       //For test Case comparing response body
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (javaClass != other?.javaClass) return false
+
+            other as successMoviesList
+
+            if (moviesList != other.moviesList) return false
+
+            return true
+        }
+    }
 
     class SearchResult(val searchResult: List<MoviesByYear>) : BaseViewState()
     object ShowSearchList : BaseViewState()
